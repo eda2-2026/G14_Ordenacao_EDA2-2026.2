@@ -1,0 +1,1 @@
+"""Demonstrações executáveis dos algoritmos."""
