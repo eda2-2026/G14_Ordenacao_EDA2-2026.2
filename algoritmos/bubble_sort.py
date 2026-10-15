@@ -9,12 +9,15 @@ class ResultadoBubbleSort:
     comparacoes: int
     trocas: int
     passadas: int
+    escritas: int
 
 
 def bubble_sort(
     lst: list[int],
     *,
     ao_trocar: Callable[[list[int]], None] | None = None,
+    ao_escrever: Callable[[int, int], None] | None = None,
+    ao_comparar: Callable[[], None] | None = None,
 ) -> ResultadoBubbleSort:
 
     vetor = lst.copy()
@@ -29,6 +32,8 @@ def bubble_sort(
 
         for i in range(fim):
             comparacoes += 1
+            if ao_comparar is not None:
+                ao_comparar()
             if vetor[i] > vetor[i + 1]:
                 vetor[i], vetor[i + 1] = vetor[i + 1], vetor[i]
                 trocas += 1
@@ -36,6 +41,11 @@ def bubble_sort(
 
                 if ao_trocar is not None:
                     ao_trocar(vetor.copy())
+
+                # Uma troca são duas escritas no vetor.
+                if ao_escrever is not None:
+                    ao_escrever(i, vetor[i])
+                    ao_escrever(i + 1, vetor[i + 1])
 
         # Se não houve trocas, tudo já está ordenado.
         if not houve_troca:
@@ -46,4 +56,5 @@ def bubble_sort(
         comparacoes=comparacoes,
         trocas=trocas,
         passadas=passadas,
+        escritas=2 * trocas,
     )

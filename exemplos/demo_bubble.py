@@ -8,13 +8,14 @@ if __name__ == "__main__":
     colunas = [3, 0, 4, 1, 2]
     print("Colunas embaralhadas:", colunas)
 
-    def mostrar_troca(estado: list[int]) -> None:
-        print("Após troca:         ", estado)
+    def mostrar_escrita(posicao: int, valor: int) -> None:
+        print(f"Escreveu {valor} na posição {posicao}")
 
-    resultado = bubble_sort(colunas, ao_trocar=mostrar_troca)
+    resultado = bubble_sort(colunas, ao_escrever=mostrar_escrita)
 
     print("Colunas ordenadas:  ", resultado.ordenado)
     print("Comparações:        ", resultado.comparacoes)
     print("Trocas:             ", resultado.trocas)
+    print("Escritas:           ", resultado.escritas)
     print("Passadas:           ", resultado.passadas)
     print("Entrada preservada: ", colunas)
