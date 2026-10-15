@@ -199,7 +199,7 @@ G14_Ordenacao_EDA2-2026.2/
 ## Tecnologias utilizadas
 
 - **Python 3.10+**
-- **tkinter** - janela e animação (já vem com o Python)
+- **tkinter** - janela e animação (biblioteca padrão do Python; no Linux exige `python3-tk`)
 - **Pillow** - abrir, redimensionar e cortar a imagem
 
 ---
@@ -213,7 +213,38 @@ git clone https://github.com/eda2-2026/G14_Ordenacao_EDA2-2026.2.git
 cd G14_Ordenacao_EDA2-2026.2
 ```
 
-### 2. Instale a dependência
+### 2. Instale as dependências
+
+O projeto precisa de duas dependências:
+
+| Dependência | Para que serve | Como instalar |
+| :--- | :--- | :--- |
+| **Python 3.10+** | Executar o projeto | [python.org](https://www.python.org/downloads/) |
+| **tkinter** | Janela e animação | Veja abaixo (não é instalado pelo `pip`) |
+| **Pillow** | Abrir, redimensionar e cortar a imagem | `requirements.txt` |
+
+#### tkinter
+
+O tkinter faz parte da biblioteca padrão do Python, então **não está no `requirements.txt`**.
+
+- **Windows:** já vem com o instalador do Python. Se aparecer `No module named 'tkinter'`, rode o instalador de novo, escolha **Modify** e marque **tcl/tk and IDLE**.
+- **macOS:** já vem com o Python do python.org. Com Homebrew: `brew install python-tk`.
+- **Linux (Ubuntu/Debian):**
+
+```bash
+sudo apt update
+sudo apt install -y python3-tk
+```
+
+Para conferir se o tkinter está funcionando:
+
+```bash
+python -m tkinter
+```
+
+Uma pequena janela de teste deve abrir.
+
+#### Pillow
 
 ```bash
 python -m pip install -r requirements.txt
